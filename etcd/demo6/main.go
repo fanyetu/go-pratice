@@ -60,12 +60,13 @@ func main() {
 				// 如果chan中获取的resp为空，那么说明续租失败
 				if keepResp == nil {
 					fmt.Println("续租失败")
-					return
+					goto END
 				} else {
 					fmt.Println("续租成功：", keepResp.ID)
 				}
 			}
 		}
+	END:
 	}()
 
 	kv = clientv3.NewKV(client)
